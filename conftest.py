@@ -1,8 +1,9 @@
 import pytest
 from pathlib import Path
 from selenium import webdriver
+import json
 
-
+#Code to Store Reports in /reports folder
 REPORT_DIR = Path(__file__).parent / "reports"
 
 
@@ -32,7 +33,7 @@ def pytest_configure(config):
 
     config.option.htmlpath = str(report_path)
 
-
+#Fixture for setup and teardown
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
@@ -43,3 +44,11 @@ def driver():
         yield driver
     finally:
         driver.quit()
+
+#Fixture to load json data from config folder
+@pytest.fixture
+def config():
+    config_path=Path(__file__).parent /"config" / "config.json"
+
+    with open(config_path,"r") as file:
+        return json.load(file)
