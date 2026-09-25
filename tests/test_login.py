@@ -1,5 +1,6 @@
 from pages.login_page import Login_Page
 
+
 def test_login(driver,config):
     # Create login page object
     login_page=Login_Page(driver,config)

@@ -35,7 +35,7 @@ def pytest_configure(config):
 
 #Fixture for setup and teardown
 @pytest.fixture
-def driver():
+def driver(request):
     driver = webdriver.Chrome()
 
     try:
@@ -43,6 +43,12 @@ def driver():
         driver.implicitly_wait(5)
         yield driver
     finally:
+        #Code to take Screenshot at the end of test and quit the driver
+        screenshot_dir=Path(__file__).parent /"screenshots"
+        screenshot_dir.mkdir(exist_ok=True)
+
+        screenshot_path=(screenshot_dir/f"{request.node.name}.png")
+        driver.save_screenshot(str(screenshot_path))
         driver.quit()
 
 #Fixture to load json data from config folder
