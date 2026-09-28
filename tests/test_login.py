@@ -1,9 +1,9 @@
-from pages.login_page import Login_Page
+from pages.login_page import LoginPage
 
 
 def test_login(driver,config):
     # Create login page object
-    login_page=Login_Page(driver,config)
+    login_page=LoginPage(driver,config)
     
     #Open Webpage using the url in config JSON
     login_page.get_url()

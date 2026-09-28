@@ -1,6 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
 
-class Get_Page:
+class GetPage:
     # Initalise Driver and Configuration from conftest in init method
     def __init__(self,driver,config):
         self.driver=driver

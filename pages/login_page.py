@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
-from pages.get_page import Get_Page
+from pages.get_page import GetPage
 
-class Login_Page(Get_Page):
+class LoginPage(GetPage):
     username=(By.XPATH,"//input[@name='username']")
     password=(By.XPATH,"//input[@name='password']")
     login_button=(By.XPATH,"//button[@type='submit']")
@@ -17,3 +17,8 @@ class Login_Page(Get_Page):
 
     def click_login(self):
         self.driver.find_element(*self.login_button).click()
+
+    def login(self,username,password):
+        self.enter_username(username)
+        self.enter_password(password)
+        self.click_login()
