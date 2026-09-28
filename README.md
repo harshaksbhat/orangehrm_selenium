@@ -27,9 +27,10 @@ Git / GitHub – Version control
 This framework is currently being developed against the OrangeHRM demo application.
 
 Application: OrangeHRM
+
 URL: https://opensource-demo.orangehrmlive.com/
 
-The application provides several modules that can be used for practicing UI automation, including:
+The application provides several modules that can be used for practicing UI automation:
 
 Login
 
@@ -49,37 +50,95 @@ Test coverage will be added progressively as I explore and automate different ap
 
 🏗️ Current Framework Structure
 
-The framework currently follows this structure:
+The current framework structure is:
 
-OrangeHRM-Automation/
-│
-├── config/
-│   └── config.json
-│
-├── pages/
-│   ├── login_page.py
-│   ├── dashboard_page.py
-│   └── ...
-│
-├── tests/
-│   ├── test_login.py
-│   ├── test_dashboard.py
-│   └── ...
-│
-├── reports/
-│   └── report.html
-│
-├── screenshots/
-│   └── ...
-│
-├── utils/
-│   └── ...
-│
-├── conftest.py
-├── pytest.ini
-├── requirements.txt
-└── README.md
+Project Root
 
+OrangeHRM-Automation
+
+Configuration
+
+config/
+
+→ config.json
+
+Contains configuration and test environment information.
+
+Page Objects
+
+pages/
+
+→ login_page.py
+
+→ dashboard_page.py
+
+→ Additional page objects will be added as the framework grows.
+
+Tests
+
+tests/
+
+→ test_login.py
+
+→ test_dashboard.py
+
+→ Additional test cases will be added progressively.
+
+Test Reports
+
+reports/
+
+→ report.html
+
+Contains HTML reports generated after test execution.
+
+Screenshots
+
+screenshots/
+
+→ Screenshots generated during test execution.
+
+Utilities
+
+utils/
+
+→ Reserved for reusable helper and utility functionality.
+
+Framework Configuration
+
+conftest.py
+
+→ Pytest fixtures and shared test setup.
+
+pytest.ini
+
+→ Pytest configuration.
+
+requirements.txt
+
+→ Python project dependencies.
+
+README.md
+
+→ Project documentation.
+
+Overall Structure
+
+The framework can be viewed conceptually as:
+
+Test Cases
+
+↓
+
+Page Objects
+
+↓
+
+Selenium WebDriver
+
+↓
+
+OrangeHRM Application
 
 The project structure is still evolving as I learn more about automation framework design and identify areas that can be improved.
 
@@ -109,11 +168,11 @@ Each page object is responsible for storing the locators and UI interactions ass
 
 For example:
 
-pages/
-├── login_page.py
-├── dashboard_page.py
-└── ...
+login_page.py
 
+dashboard_page.py
+
+Additional page objects as new application modules are automated.
 
 The purpose of this layer is to keep page-specific Selenium implementation separate from the actual test scenarios.
 
@@ -123,11 +182,11 @@ Contains the actual Pytest test cases.
 
 Example:
 
-tests/
-├── test_login.py
-├── test_dashboard.py
-└── ...
+test_login.py
 
+test_dashboard.py
+
+Additional test cases as test coverage expands.
 
 The tests focus on defining the scenarios and validations, while the Page Object layer handles the corresponding page interactions.
 
@@ -189,19 +248,21 @@ pip install -r requirements.txt
 
 The framework follows the Page Object Model (POM) design pattern.
 
-The basic relationship is:
+The basic flow is:
 
-                Test Case
-                    │
-                    ▼
-             Page Object
-                    │
-                    ▼
-            Selenium WebDriver
-                    │
-                    ▼
-              OrangeHRM
+Test Case
 
+↓
+
+Page Object
+
+↓
+
+Selenium WebDriver
+
+↓
+
+OrangeHRM Application
 
 The intention is to keep:
 
@@ -211,16 +272,16 @@ Page locators and UI interactions inside the pages layer
 
 Configuration inside the config layer
 
-Shared fixtures/setup inside conftest.py
+Shared fixtures and setup inside conftest.py
 
 This separation makes the framework easier to understand and provides a foundation for improving maintainability as the test suite grows.
 
 🧪 Running the Tests
-1. Clone the repository
+1. Clone the Repository
 git clone <your-repository-url>
 cd <your-repository-name>
 
-2. Create a virtual environment
+2. Create a Virtual Environment
 python -m venv venv
 
 
@@ -235,10 +296,10 @@ macOS / Linux
 
 source venv/bin/activate
 
-3. Install dependencies
+3. Install Dependencies
 pip install -r requirements.txt
 
-4. Run the tests
+4. Run the Tests
 pytest
 
 
@@ -259,7 +320,6 @@ The report is stored under:
 
 reports/
 
-
 The exact report filename and generation behavior may change as the reporting implementation evolves.
 
 📸 Screenshots
@@ -267,7 +327,6 @@ The exact report filename and generation behavior may change as the reporting im
 Screenshots generated during execution are stored under:
 
 screenshots/
-
 
 Currently, the framework captures a screenshot at the end of test execution.
 
@@ -316,19 +375,30 @@ I am intentionally building it incrementally rather than attempting to implement
 The development process roughly looks like:
 
 Learn a concept
-      ↓
-Apply it to the framework
-      ↓
-Write / improve tests
-      ↓
-Identify problems
-      ↓
-Refactor
-      ↓
-Learn something new
-      ↓
-Improve the framework
 
+↓
+
+Apply it to the framework
+
+↓
+
+Write / improve tests
+
+↓
+
+Identify problems
+
+↓
+
+Refactor
+
+↓
+
+Learn something new
+
+↓
+
+Improve the framework
 
 Because of this, the framework structure and implementation may change over time.
 
@@ -338,33 +408,33 @@ Some areas may initially be implemented in a simple way and later refactored as 
 
 As my automation skills develop, I plan to explore areas such as:
 
- Improve Page Object implementation
+Improve Page Object implementation
 
- Improve explicit wait strategies
+Improve explicit wait strategies
 
- Expand test coverage
+Expand test coverage
 
- Improve screenshot handling
+Improve screenshot handling
 
- Add reusable utilities
+Add reusable utilities
 
- Improve configuration management
+Improve configuration management
 
- Explore test data management
+Explore test data management
 
- Improve logging
+Improve logging
 
- Explore test parameterization
+Explore test parameterization
 
- Improve reporting
+Improve reporting
 
- Explore parallel test execution
+Explore parallel test execution
 
- Add CI/CD integration
+Add CI/CD integration
 
- Explore API automation
+Explore API automation
 
- Refactor the framework based on lessons learned
+Refactor the framework based on lessons learned
 
 These are learning goals rather than features currently implemented in the framework.
 
